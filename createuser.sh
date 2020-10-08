@@ -27,7 +27,7 @@ if [ "$ROOT_PASSWORD_SECRET" != "" ]; then
             fi
         fi
         sleep 1
-        echo "[c]"
+        echo "[user]"
     done
 
     mongo --eval "db.isMaster().ismaster" | grep true

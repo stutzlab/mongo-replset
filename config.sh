@@ -12,7 +12,7 @@ if [ "$INIT_REPL_NODES" != "" ]; then
    MAX_RETRIES=5
 fi
 
-/createuser.sh
+/createuser.sh &
 
 echo "Verifying if this node is already part of a config replicaset..."
 C=0
@@ -29,6 +29,7 @@ while (( "$C" < "$MAX_RETRIES" )); do
      C=($C+1)
    fi
    sleep 1
+   echo "[config]"
 done
 
 if [ "$INIT_REPL_NODES" == "" ]; then
