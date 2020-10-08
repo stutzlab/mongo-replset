@@ -18,7 +18,6 @@ services:
   mongo1:
     image: stutzlab/mongo-replset
     environment:
-      - SHARD_REPLICA_SET=mongo1
       - INIT_REPL_NODES=mongo1,mongo2,mongo3
       - SHARED_KEY_SECRET=mongo_sharedkey
       - ROOT_PASSWORD_SECRET=root_password
@@ -33,7 +32,6 @@ services:
   mongo2:
     image: stutzlab/mongo-replset
     environment:
-      - SHARD_REPLICA_SET=mongo2
       - SHARED_KEY_SECRET=mongo_sharedkey
       - ROOT_PASSWORD_SECRET=root_password
     ports:
@@ -47,7 +45,6 @@ services:
   mongo3:
     image: stutzlab/mongo-replset
     environment:
-      - SHARD_REPLICA_SET=mongo3
       - SHARED_KEY_SECRET=mongo_sharedkey
       - ROOT_PASSWORD_SECRET=root_password
     ports:
@@ -93,7 +90,7 @@ volumes:
 
 ## ENVs
 
-* CONFIG_REPLICA_SET - name of the replica set to be used in configsrv replication. defaults to 'configsrv'
+* REPLICA_SET_NAME - name of the replica set to be used. defaults to 'replset1'
 * CONFIG_REPL_NODES - comma separated list of replica set servers. ex.: mongo1,mongo2,mongo3. required
 * ROOT_USERNAME - name of the 'root' username created during replicaset initial setup. defaults to 'admin'
 * ROOT_PASSWORD_SECRET - name of the Docker secret that will contain the password for the root user. required

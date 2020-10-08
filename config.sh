@@ -18,7 +18,7 @@ echo "Verifying if this node is already part of a config replicaset..."
 C=0
 set +e
 while (( "$C" < "$MAX_RETRIES" )); do
-   mongo mongodb://localhost --eval "db.isMaster()" | grep $CONFIG_REPLICA_SET
+   mongo mongodb://localhost --eval "db.isMaster()" | grep $REPLICA_SET_NAME
    if [ "$?" = "0" ]; then
      mongo mongodb://localhost --eval "db.isMaster()"
      echo ">>> THIS NODE IS PART OF A CONFIG REPLICASET"
@@ -46,7 +46,7 @@ rs.initiate(
    {
 EOT
 
-echo "_id: \"$CONFIG_REPLICA_SET\"," >> /init-configserver.js
+echo "_id: \"$REPLICA_SET_NAME\"," >> /init-configserver.js
 
 cat <<EOT >> /init-configserver.js
       version: 1,

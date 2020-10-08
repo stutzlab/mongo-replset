@@ -8,7 +8,7 @@ if [ "$ROOT_PASSWORD_SECRET" != "" ]; then
 
     echo "Waiting for replicaset to be ready..."
     while true; do
-        mongo mongodb://localhost --eval "db.isMaster()" | grep $CONFIG_REPLICA_SET
+        mongo mongodb://localhost --eval "db.isMaster()" | grep $REPLICA_SET_NAME
         if [ "$?" = "0" ]; then
             echo "Replicaset ready. Verifying PRIMARY election"
 
@@ -27,7 +27,7 @@ if [ "$ROOT_PASSWORD_SECRET" != "" ]; then
             fi
         fi
         sleep 1
-        echo "c"
+        echo "[c]"
     done
 
     mongo --eval "db.isMaster().ismaster" | grep true

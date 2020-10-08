@@ -6,7 +6,6 @@ services:
     image: stutzlab/mongo-replset
     build: .
     environment:
-      - SHARD_REPLICA_SET=mongo1
       - INIT_REPL_NODES=mongo1,mongo2,mongo3
       - SHARED_KEY_SECRET=mongo_sharedkey
       - ROOT_PASSWORD_SECRET=root_password
@@ -22,7 +21,6 @@ services:
     image: stutzlab/mongo-replset
     build: .
     environment:
-      - SHARD_REPLICA_SET=mongo2
       - SHARED_KEY_SECRET=mongo_sharedkey
       - ROOT_PASSWORD_SECRET=root_password
     ports:
@@ -37,7 +35,6 @@ services:
     image: stutzlab/mongo-replset
     build: .
     environment:
-      - SHARD_REPLICA_SET=mongo3
       - SHARED_KEY_SECRET=mongo_sharedkey
       - ROOT_PASSWORD_SECRET=root_password
     ports:
